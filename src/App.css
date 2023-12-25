@@ -59,4 +59,24 @@ body {
 
 .calculator span i {
   position: relative;
+  font-style: normal;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.calculator {
+  position: relative;
+  display: grid;
+}
+
+.calculator .value {
+  position: relative;
+  grid-column: span 4;
+  height: 100px;
+  width: calc(100% -20px);
+  /* left: 5px; */
+  /* right: 5px; */
+  border: none;
+  outline: none;
+  background-color: #afaf7c;
 }
