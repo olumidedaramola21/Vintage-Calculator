@@ -1,15 +1,23 @@
 import  { useState } from 'react';
-
+import * as math from 'mathjs';
 import './App.css';
 
 function App() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState('0');
 
-  const handleClear = () => setInput('');
+  const handleClear = () => setInput('0');
 
   const handleAppend = (value) => {
-    setInput((prev) => prev + value);
+    setInput((prev) => (prev === '0' ? value : prev + value));
   };
+
+  const handleEvaluate = () => {
+    try {
+      setInput(math.evaluate(input).toString());
+    } catch (error) {
+      setInput('error');
+    }
+    }
 
   return (
    <div className='container'>
@@ -34,7 +42,7 @@ function App() {
       <span className='num' onClick={() => handleAppend('.')}><i>.</i></span>
 
 
-      <span className='num equal' onClick="document.calc.txt.value=eval(calc.txt.value) "><i>=</i></span>
+      <span className='num equal' onClick={() => handleEvaluate()}><i>=</i></span>
     </form>
    </div>
   )
